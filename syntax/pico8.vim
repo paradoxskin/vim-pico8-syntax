@@ -40,37 +40,37 @@ syn match luaComment "\%^#!.*"
 " catch errors caused by wrong parenthesis and wrong curly brackets or
 " keywords placed outside their respective blocks
 
-syn region luaParen transparent start='(' end=')' contains=ALLBUT,luaError,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd,luaCondStart,luaBlock,luaRepeatBlock,luaRepeat,luaStatement
+syn region luaParen transparent start='(' end=')' contains=ALLBUT,luaError,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd,luaCondStart,luaBlock,luaRepeatBlock,luaRepeat,luaStatement,color0,color1,color2,color3,color4,color5,color6,color7,color8,color9,color10,color11,color12,color13,color14,color15
 syn match  luaError ")"
 syn match  luaError "}"
 syn match  luaError "\<\%(end\|else\|elseif\|then\|until\|in\)\>"
 
 " Function declaration
-syn region luaFunctionBlock transparent matchgroup=luaFunction start="\<function\>" end="\<end\>" contains=ALLBUT,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd,luaRepeat
+syn region luaFunctionBlock fold transparent matchgroup=luaFunction start="\<function\>" end="\<end\>" contains=ALLBUT,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd,luaRepeat,color0,color1,color2,color3,color4,color5,color6,color7,color8,color9,color10,color11,color12,color13,color14,color15
 
 " if then else elseif end
 syn keyword luaCond contained else
 
 " then ... end
-syn region luaCondEnd contained transparent matchgroup=luaCond start="\<then\>" end="\<end\>" contains=ALLBUT,luaTodo,luaSpecial,luaRepeat
+syn region luaCondEnd contained transparent matchgroup=luaCond start="\<then\>" end="\<end\>" contains=ALLBUT,luaTodo,luaSpecial,luaRepeat,color0,color1,color2,color3,color4,color5,color6,color7,color8,color9,color10,color11,color12,color13,color14,color15
 
 " elseif ... then
-syn region luaCondElseif contained transparent matchgroup=luaCond start="\<elseif\>" end="\<then\>" contains=ALLBUT,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd,luaRepeat
+syn region luaCondElseif contained transparent matchgroup=luaCond start="\<elseif\>" end="\<then\>" contains=ALLBUT,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd,luaRepeat,color0,color1,color2,color3,color4,color5,color6,color7,color8,color9,color10,color11,color12,color13,color14,color15
 
 " if ... then
-syn region luaCondStart transparent matchgroup=luaCond start="\<if\>" end="\<then\>"me=e-4 contains=ALLBUT,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd,luaRepeat nextgroup=luaCondEnd skipwhite skipempty
+syn region luaCondStart transparent matchgroup=luaCond start="\<if\>" end="\<then\>"me=e-4 contains=ALLBUT,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd,luaRepeat,color0,color1,color2,color3,color4,color5,color6,color7,color8,color9,color10,color11,color12,color13,color14,color15 nextgroup=luaCondEnd skipwhite skipempty
 
 " do ... end
-syn region luaBlock transparent matchgroup=luaStatement start="\<do\>" end="\<end\>" contains=ALLBUT,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd,luaRepeat
+syn region luaBlock transparent matchgroup=luaStatement start="\<do\>" end="\<end\>" contains=ALLBUT,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd,luaRepeat,color0,color1,color2,color3,color4,color5,color6,color7,color8,color9,color10,color11,color12,color13,color14,color15
 
 " repeat ... until
-syn region luaRepeatBlock transparent matchgroup=luaRepeat start="\<repeat\>" end="\<until\>" contains=ALLBUT,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd,luaRepeat
+syn region luaRepeatBlock transparent matchgroup=luaRepeat start="\<repeat\>" end="\<until\>" contains=ALLBUT,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd,luaRepeat,color0,color1,color2,color3,color4,color5,color6,color7,color8,color9,color10,color11,color12,color13,color14,color15
 
 " while ... do
-syn region luaRepeatBlock transparent matchgroup=luaRepeat start="\<while\>" end="\<do\>"me=e-2 contains=ALLBUT,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd,luaRepeat nextgroup=luaBlock skipwhite skipempty
+syn region luaRepeatBlock transparent matchgroup=luaRepeat start="\<while\>" end="\<do\>"me=e-2 contains=ALLBUT,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd,luaRepeat,color0,color1,color2,color3,color4,color5,color6,color7,color8,color9,color10,color11,color12,color13,color14,color15 nextgroup=luaBlock skipwhite skipempty
 
 " for ... do and for ... in ... do
-syn region luaRepeatBlock transparent matchgroup=luaRepeat start="\<for\>" end="\<do\>"me=e-2 contains=ALLBUT,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd nextgroup=luaBlock skipwhite skipempty
+syn region luaRepeatBlock transparent matchgroup=luaRepeat start="\<for\>" end="\<do\>"me=e-2 contains=ALLBUT,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd,color0,color1,color2,color3,color4,color5,color6,color7,color8,color9,color10,color11,color12,color13,color14,color15 nextgroup=luaBlock skipwhite skipempty
 
 " Following 'else' example. This is another item to those
 " contains=ALLBUT,... because only the 'for' luaRepeatBlock contains it.
@@ -112,8 +112,44 @@ if lua_version > 5 || (lua_version == 5 && lua_subversion >= 1)
 endif
 
 " tables
-syn region  luaTableBlock transparent matchgroup=luaTable start="{" end="}" contains=ALLBUT,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd,luaCondStart,luaBlock,luaRepeatBlock,luaRepeat,luaStatement
+syn region  luaTableBlock transparent matchgroup=luaTable start="{" end="}" contains=ALLBUT,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd,luaCondStart,luaBlock,luaRepeatBlock,luaRepeat,luaStatement,color0,color1,color2,color3,color4,color5,color6,color7,color8,color9,color10,color11,color12,color13,color14,color15
 
+" __lua__
+syn region luaStationBlock transparent matchgroup=luaStation start="^__lua__$" end="\(^__\)\@=" contains=ALLBUT,luaTodo,luaSpecial,luaCond,luaCondElseif,luaCondEnd,luaRepeat,color0,color1,color2,color3,color4,color5,color6,color7,color8,color9,color10,color11,color12,color13,color14,color15
+
+" __gfx__
+syn match color0 "0" containedin=spriteStationBlock contained
+syn match color1 "1" containedin=spriteStationBlock contained
+syn match color2 "2" containedin=spriteStationBlock contained
+syn match color3 "3" containedin=spriteStationBlock contained
+syn match color4 "4" containedin=spriteStationBlock contained
+syn match color5 "5" containedin=spriteStationBlock contained
+syn match color6 "6" containedin=spriteStationBlock contained
+syn match color7 "7" containedin=spriteStationBlock contained
+syn match color8 "8" containedin=spriteStationBlock contained
+syn match color9 "9" containedin=spriteStationBlock contained
+syn match color10 "a" containedin=spriteStationBlock contained
+syn match color11 "b" containedin=spriteStationBlock contained
+syn match color12 "c" containedin=spriteStationBlock contained
+syn match color13 "d" containedin=spriteStationBlock contained
+syn match color14 "e" containedin=spriteStationBlock contained
+syn match color15 "f" containedin=spriteStationBlock contained
+syn cluster pico8color contains=color0,color1,color2,color3,color4,color5,color6,color7,color8,color9,color10,color11,color12,color13,color14,color15
+syn region spriteStationBlock fold transparent matchgroup=spriteStation start="__gfx__$" end="\(^__\)\@=" contains=pico8color
+
+" __map__
+syn region mapStationBlock fold transparent matchgroup=mapStation start="__map__$" end="\(^__\)\@=" contains=NONE
+
+" __sfx__
+syn region sfxStationBlock fold transparent matchgroup=sfxStation start="__sfx__$" end="\(^__\)\@=" contains=NONE
+
+" __music__
+syn region musicStationBlock fold transparent matchgroup=musicStation start="__music__$" end="\(^__\)\@=" contains=NONE
+
+" tags
+syn region luaTagBlock fold transparent matchgroup=luaTag start="\(^-->8\n\)\@<=--.*$" end="\(^$\)\?\(^-->8\)\@=" end="\(^__\)\@="
+
+" function
 syn keyword luaFunc clip pget pset sget
 syn keyword luaFunc sset fget fset print
 syn keyword luaFunc cursor color cls camera
@@ -131,6 +167,8 @@ syn keyword luaFunc shl shr sub all pairs
 syn keyword luaFunc assert type setmetatable
 syn keyword luaFunc cocreate coresume costatus yield
 syn keyword luaFunc sgn stat cartdata dget dset
+syn keyword luaFunc deli count tline time printh oval ovalfill fillp ceil menuitem tostr tonum chr ord split getmetatable
+syn keyword luaFunc rawset rawget rawequal rawlen
 
 
 " Define the default highlighting.
@@ -160,6 +198,13 @@ if version >= 508 || !exists("did_lua_syntax_inits")
   HiLink luaError		Error
   HiLink luaSpecial		SpecialChar
   HiLink luaFunc		Identifier
+
+  HiLink luaStation		Keyword
+  HiLink spriteStation          Keyword
+  HiLink sfxStation             Keyword
+  HiLink mapStation             Keyword
+  HiLink musicStation           Keyword
+  HiLink luaTag                 VertSplit
 
   delcommand HiLink
 endif
